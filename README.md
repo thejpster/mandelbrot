@@ -29,13 +29,25 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 mandel.obj
 
 C:\Mandel> mandel
-Ran at 5985 kpixels per second
+Ran at 5693 kpixels per second
 
 C:\Mandel> magick output.ppm -normalize output.png
 ```
 
+### (2) GCC 12.2 for Linux
+
+I used `gcc version 12.2.0 (Raspbian 12.2.0-14+rpi1)`.
+
+```console
+user@host:~/mandelbrot $ gcc -O3 mandel.c -o mandel
+user@host:~/mandelbrot $ ./mandel
+```
+
 ## Benchmarks
 
-| Machine              | CPU                                     | OS             | Binary | kPixels Per Second |
-| -------------------- | --------------------------------------- | -------------- | ------ | ------------------ |
-| HP Z1 Entry Tower G5 | Intel(R) Core(TM) i9-9900 CPU @ 3.10GHz | Windows 11 x64 | 1      | 5693               |
+The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
+
+| Machine              | CPU                              | OS                | Compilation | kPixels Per Second |
+| -------------------- | -------------------------------- | ----------------- | ----------- | ------------------ |
+| HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           | 5693               |
+| Raspberry Pi 4       | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           | 1783               |
