@@ -26,7 +26,7 @@ static float time_diff(my_time_t start, my_time_t end, unsigned long num_pixels)
     return result;
 }
 
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__APPLE__)
 
 #include <sys/time.h>
 #include <stdint.h>

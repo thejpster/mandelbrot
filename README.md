@@ -43,6 +43,15 @@ user@host:~/mandelbrot $ gcc -O3 mandel.c -o mandel
 user@host:~/mandelbrot $ ./mandel
 ```
 
+### (3) clang 16 for macOS
+
+I used `Apple clang version 16.0.0 (clang-1600.0.26.4)`.
+
+```console
+user@host:~/mandelbrot $ cc -O3 mandel.c -o mandel
+user@host:~/mandelbrot $ ./mandel
+```
+
 ## Benchmarks
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
@@ -51,3 +60,6 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | -------------------- | -------------------------------- | ----------------- | ----------- | ------------------ |
 | HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           | 5693               |
 | Raspberry Pi 4       | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           | 1783               |
+| MacBook M1 Pro       | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           | 6230               |
+
+On the MacBook M1 Pro you have to run it a few times in a row to get the CPU to ramp up to maximum performance.
