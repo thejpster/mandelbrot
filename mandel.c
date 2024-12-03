@@ -28,10 +28,12 @@ int main(void)
     const int width = 1280;
     const int height = 1024;
     const unsigned long pixels = (unsigned long)width * (unsigned long)height;
-    my_time_t start = time_get();
+    my_time_t start, end;
+    float kpixels_per_second;
+    start = time_get();
     run(width, height);
-    my_time_t end = time_get();
-    float kpixels_per_second = time_diff(start, end, pixels);
+    end = time_get();
+    kpixels_per_second = time_diff(start, end, pixels);
     printf("Ran at %.3f kpixels per second\n", kpixels_per_second);
     return 0;
 }

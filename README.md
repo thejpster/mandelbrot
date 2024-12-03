@@ -52,6 +52,17 @@ user@host:~/mandelbrot $ cc -O3 mandel.c -o mandel
 user@host:~/mandelbrot $ ./mandel
 ```
 
+### (4) MIPSpro for IRIX
+
+I used `MIPSpro ANSI C 6.2` on IRIX 6.2.
+
+```console
+% cc -O3 -o mandel mandel.c
+% ./mandel
+```
+
+Because it was compiled on an R8000 machine, the C compiler produced a 64-bit executable using MIPS IV instructions.
+
 ## Benchmarks
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
@@ -61,5 +72,6 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           | 5693               |
 | Raspberry Pi 4       | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           | 1783               |
 | MacBook M1 Pro       | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           | 6230               |
+| SGI POWER Indigo 2   | MIPS R8000                       | IRIX 6.2          | 4           | 57                 |
 
 On the MacBook M1 Pro you have to run it a few times in a row to get the CPU to ramp up to maximum performance.

@@ -26,10 +26,14 @@ static float time_diff(my_time_t start, my_time_t end, unsigned long num_pixels)
     return result;
 }
 
-#elif defined(__linux__) || defined(__APPLE__)
+#elif defined(__linux__) || defined(__APPLE__) || defined(__unix)
 
 #include <sys/time.h>
+
+#if !defined(__sgi)
 #include <stdint.h>
+#endif
+
 #include <stdlib.h>
 
 typedef struct my_time_t
@@ -41,7 +45,8 @@ static my_time_t time_get(void)
 {
     my_time_t t;
     int result = gettimeofday(&t.timeval, NULL);
-    if (result != 0) {
+    if (result != 0)
+    {
         perror("gettimeofday");
         exit(1);
     }
@@ -50,8 +55,8 @@ static my_time_t time_get(void)
 
 static float time_diff(my_time_t start, my_time_t end, unsigned long num_pixels)
 {
-    uint64_t start_us = (uint64_t) start.timeval.tv_usec + ((uint64_t) start.timeval.tv_sec * 1000000);
-    uint64_t end_us = (uint64_t) end.timeval.tv_usec + ((uint64_t) end.timeval.tv_sec * 1000000);
+    uint64_t start_us = (uint64_t)start.timeval.tv_usec + ((uint64_t)start.timeval.tv_sec * 1000000);
+    uint64_t end_us = (uint64_t)end.timeval.tv_usec + ((uint64_t)end.timeval.tv_sec * 1000000);
     uint64_t delta = end_us - start_us;
     float result = (((float)num_pixels / (float)delta) * 1000.0);
     return result;
