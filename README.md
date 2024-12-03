@@ -63,15 +63,29 @@ I used `MIPSpro ANSI C 6.2` on IRIX 6.2.
 
 Because it was compiled on an R8000 machine, the C compiler produced a 64-bit executable using MIPS IV instructions.
 
+### (5) GCC for SPARC Solaris
+
+I used `gcc 3.4.3` on Solaris 7 for SPARC.
+
+```console
+$ gcc -O3 -o mandel mandel.c -mcpu=v9
+$ ./mandel
+```
+
+This particular C compiler produced 32-bit SPARC ELF files. I wasn't able to get it to produce 64-bit SPARC ELF code.
+
 ## Benchmarks
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
 
 | Machine              | CPU                              | OS                | Compilation | kPixels Per Second |
 | -------------------- | -------------------------------- | ----------------- | ----------- | ------------------ |
+| MacBook M1 Pro       | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           | 6230               |
 | HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           | 5693               |
 | Raspberry Pi 4       | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           | 1783               |
-| MacBook M1 Pro       | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           | 6230               |
-| SGI POWER Indigo 2   | MIPS R8000                       | IRIX 6.2          | 4           | 57                 |
+| Sun Ultra 80         | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           | 421                |
+| SGI POWER Indigo 2   | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           | 57.2               |
 
 On the MacBook M1 Pro you have to run it a few times in a row to get the CPU to ramp up to maximum performance.
+
+Note that the Ultra 80 has 3 CPUs fitted, the M1 Pro has 8 cores and the Core i9-9900 has 8 cores and 16 threads. Only a single instance of the process was executed though.
