@@ -78,14 +78,17 @@ This particular C compiler produced 32-bit SPARC ELF files. I wasn't able to get
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
 
-| Machine              | CPU                              | OS                | Compilation | kPixels Per Second |
-| -------------------- | -------------------------------- | ----------------- | ----------- | ------------------ |
-| MacBook M1 Pro       | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           | 6230               |
-| HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           | 5693               |
-| Raspberry Pi 4       | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           | 1783               |
-| Sun Ultra 80         | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           | 421                |
-| SGI POWER Indigo 2   | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           | 57.2               |
+| Machine              | CPU                              | OS                | Compilation | kPixels Per Second | Cycles/pixel |
+| -------------------- | -------------------------------- | ----------------- | ----------- | ------------------ | ------------ |
+| MacBook M1 Pro       | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           | 6230               | 513          |
+| HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           | 5693               | 544          |
+| Raspberry Pi 5       | Arm Cortex-A76 @ 2.4 GHz         | Debian Linux 12.8 | 2           | 5300               | 452          |
+| Raspberry Pi 4       | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           | 1783               | 1009         |
+| Sun Ultra 80         | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           | 421                | 1068         |
+| SGI POWER Indigo 2   | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           | 57.2               | 1311         |
 
-On the MacBook M1 Pro you have to run it a few times in a row to get the CPU to ramp up to maximum performance.
+Notes:
 
-Note that the Ultra 80 has 3 CPUs fitted, the M1 Pro has 8 cores and the Core i9-9900 has 8 cores and 16 threads. Only a single instance of the process was executed though.
+* On the MacBook M1 Pro you have to run it a few times in a row to get the CPU to ramp up to maximum performance.
+* Some of these systems have multiple processors, or multiple cores within a processor, or multiple hardware threads within a core. This benchmark is strictly single-threaded though.
+* Some of these systems have variable clock frequencies, and so for 'Cycles/pixel' we've assumed the system is running at its nominal clock speed, which might be wrong.
