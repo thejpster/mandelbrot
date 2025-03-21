@@ -74,6 +74,17 @@ $ ./mandel
 
 This particular C compiler produced 32-bit SPARC ELF files. I wasn't able to get it to produce 64-bit SPARC ELF code.
 
+### (6) GCC for PA-RISC HP-UX
+
+I used `gcc 3.2` on HP-UX 11.00 for PA-RISC.
+
+```console
+$ gcc -O3 -o mandel mandel.c
+$ ./mandel
+```
+
+This particular C compiler produced 64-bit PA-RISC 2.0 ELF files.
+
 ## Benchmarks
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
@@ -84,6 +95,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           | 5693               | 544          |
 | Raspberry Pi 5       | Arm Cortex-A76 @ 2.4 GHz         | Debian Linux 12.8 | 2           | 5300               | 452          |
 | Raspberry Pi 4       | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           | 1783               | 1009         |
+| HP Visualize C3000   | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           | 534                | 749          | 
 | Sun Ultra 80         | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           | 421                | 1068         |
 | SGI POWER Indigo 2   | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           | 57.2               | 1311         |
 

@@ -30,7 +30,7 @@ static float time_diff(my_time_t start, my_time_t end, unsigned long num_pixels)
 
 #include <sys/time.h>
 
-#if defined(__sgi)||defined(__sun)
+#if defined(__sgi)||defined(__sun)||defined(__hpux)
 #else
 #include <stdint.h>
 #endif
