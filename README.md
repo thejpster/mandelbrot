@@ -34,9 +34,13 @@ Ran at 5693 kpixels per second
 C:\Mandel> magick output.ppm -normalize output.png
 ```
 
-### (2) GCC 12.2 for Linux
+### (2) GCC for Linux
 
-I used `gcc version 12.2.0 (Raspbian 12.2.0-14+rpi1)`.
+On Arm Debian I used `gcc version 12.2.0 (Raspbian 12.2.0-14+rpi1)`.
+
+On x86-64 Pop OS! I used `gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04)`
+
+Either way I ran:
 
 ```console
 user@host:~/mandelbrot $ gcc -O3 mandel.c -o mandel
@@ -100,6 +104,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 
 | Machine              | CPU                              | OS                | Compilation | kPixels Per Second | Cycles/pixel |
 | -------------------- | -------------------------------- | ----------------- | ----------- | ------------------ | ------------ |
+| HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Pop OS! 22.04     | 2           | 6675               | 464          |
 | MacBook M1 Pro       | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           | 6230               | 513          |
 | HP Z1 Entry Tower G5 | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           | 5693               | 544          |
 | Raspberry Pi 5       | Arm Cortex-A76 @ 2.4 GHz         | Debian Linux 12.8 | 2           | 5300               | 452          |
