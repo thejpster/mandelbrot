@@ -67,6 +67,30 @@ static float time_diff(my_time_t start, my_time_t end, unsigned long num_pixels)
     return result;
 }
 
+#elif defined(__riscos)
+
+#include <time.h>
+
+// Contains time in centiseconds
+typedef struct my_time_t {
+        clock_t clock;
+} my_time_t;
+
+static my_time_t time_get(void) {
+       my_time_t t;
+       t.clock = clock();
+       return t;
+}
+
+static float time_diff(my_time_t start, my_time_t end, unsigned long num_pixels)
+{
+    unsigned int delta = end.clock - start.clock;
+    float result;
+    printf("%u ticks\n", delta);
+    result = ((float) num_pixels / (float) delta) / 10.0f;
+    return result;
+}
+
 #else
 
 #error Platform not supported
