@@ -26,11 +26,15 @@ static float time_diff(my_time_t start, my_time_t end, unsigned long num_pixels)
     return result;
 }
 
-#elif defined(__linux__) || defined(__APPLE__) || defined(__unix)
+#elif defined(__linux__) || defined(__APPLE__) || defined(__unix) || defined(unix)
 
 #include <sys/time.h>
 
 #if defined(__sgi)||defined(__sun)||defined(__hpux)
+// nothing required
+#elif defined(NeXT)
+// stdint.h not available - but unsigned long long is 64 bits
+typedef unsigned long long uint64_t;
 #else
 #include <stdint.h>
 #endif
