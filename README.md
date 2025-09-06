@@ -113,6 +113,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | Sun Ultra 80         | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           | 421                | 1068         |
 | SGI POWER Indigo 2   | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           | 57.2               | 1311         |
 | HP 9000 712          | HP PA-RISC 7100LC @ 60 MHz       | NEXTSTEP 3.3      | 7           | 49.3               | 1217         |
+| Sun SPARCstation 5   | microSPARC-II @ 110 MHz          | Solaris 2.6       | 5           | 47.6               | 2310         |
 
 Notes:
 
