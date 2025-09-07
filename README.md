@@ -91,7 +91,7 @@ This particular C compiler produced 64-bit PA-RISC 2.0 ELF files.
 
 ### (7) GCC for NEXTSTEP 3.3
 
-I used `cc-437.2.6, gcc version 2.5.8` from the NEXTSTEP 3.3 Developer CD. I ran it on an HP 9000 712/60, so it produced PA-RISC 1.1 Mach-O files.
+I used `cc-437.2.6, gcc version 2.5.8` from the NEXTSTEP 3.3 Developer CD. When ran it on an HP 9000 712/60 it produced PA-RISC 1.1 Mach-O files. When I ran it on a SPARCstation 20 it produced SPARC Mach-O files.
 
 ```console
 hp712> cc -O3 -o mandel mandel.c
@@ -112,6 +112,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | HP Visualize C3000   | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           | 534                | 749          | 
 | Sun Ultra 80         | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           | 421                | 1068         |
 | SGI POWER Indigo 2   | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           | 57.2               | 1311         |
+| Sun SPARCstation 20  | SuperSPARC-II @ 60 MHz           | NEXTSTEP 3.3      | 7           | 51.4               | 1167         |
 | HP 9000 712          | HP PA-RISC 7100LC @ 60 MHz       | NEXTSTEP 3.3      | 7           | 49.3               | 1217         |
 | Sun SPARCstation 5   | microSPARC-II @ 110 MHz          | Solaris 2.6       | 5           | 47.6               | 2310         |
 
