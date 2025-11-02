@@ -107,6 +107,15 @@ alpha> ./mandel
 
 This compiler produced a 64-bit Alpha ECOFF file.
 
+### (9) HP ANSI C
+
+```console
+$ cc -Ae mandel.c -O -lm
+$ ./a.out
+```
+
+This compiler produced a `PA-RISC 1.1 shared executable`. Some hacking on the `time.h` file was required as I was unable to work out precisely what (if any) predefined macros HP ANSI C defined such that I could identify it.
+
 ## Benchmarks
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
@@ -125,6 +134,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | Sun SPARCstation 20    | SuperSPARC-II @ 60 MHz           | NEXTSTEP 3.3      | 7           | 51.4               | 1167         |
 | HP 9000 712            | HP PA-RISC 7100LC @ 60 MHz       | NEXTSTEP 3.3      | 7           | 49.3               | 1217         |
 | Sun SPARCstation 5     | microSPARC-II @ 110 MHz          | Solaris 2.6       | 5           | 47.6               | 2310         |
+| HP 9000 705            | HP PA-RISC 7000 @ 35 MHz         | HP-UX 9.0         | 9           | 24.7               | 1417         |
 
 Notes:
 
