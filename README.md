@@ -120,6 +120,24 @@ The HP 9000 340 had the disadvantage that the filesystem was network mounted, so
 
 Some hacking on the `time.h` file was required as I was unable to work out precisely what (if any) predefined macros HP ANSI C defined such that I could identify it.
 
+### (10) Acorn C/C++ Release 5 for RISC OS
+
+I used the `!CC` program to compile `c.mandel`. Modifications were required to name the output file `output/ppm` rather than `output.ppm`, to avoid an ugly looking error which I think was caused because the `output` folder did not exist. Yes, on RISC OS `/` is just a valid filename character and `.` is in fact the directory separator.
+
+### (11) GCC for Debian 3.0 (Woody) for Arm
+
+I used `gcc 2.95.4` on Debian 3.0 (Woody) for Arm. Initially I used the default options, which emitted `CDP` instructions that were trapped by the kernel and emulated. This build ran for over three hours and was nowhere near finished (the RISC OS build completed in just over an hour on the same hardware, for reference). I did a second build using:
+
+```console
+$ apt-get install libfloat1-dev
+$ gcc -O3 -msoft-float -o mandel mandel.c
+$ ./mandel
+```
+
+This was still excruciatingly slow, taking around 2 hours 45 minutes.
+
+Either way, I got a 32-bit ARMv3 OABI ELF file (`readelf` says it is *EABI* but it's definitely *OABI*).
+
 ## Benchmarks
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
@@ -141,6 +159,8 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | Sun SPARCstation 5     | microSPARC-II @ 110 MHz          | Solaris 2.6       | 5           |                 47 |         2310 |
 | HP 9000 705            | HP PA-RISC 7000 @ 35 MHz         | HP-UX 9.0         | 9           |                 24 |         1417 |
 | HP 9000 340            | MC68030/68882 @ 16.7 MHz         | HP-UX 9.0         | 9           |               0.53 |       31,447 |
+| Acorn RiscPC 700       | ARM710 @ 40 MHz                  | RISC OS 3.6       | 10          |               0.33 |      121,000 |
+| Acorn RiscPC 700       | ARM710 @ 40 MHz                  | Debian Linux 3.0  | 11          |               0.13 | over 300,000 |
 
 Notes:
 
