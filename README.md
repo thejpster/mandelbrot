@@ -114,7 +114,7 @@ $ c89 -D_INCLUDE_HPUX_SOURCE mandel.c -O -lm
 $ ./a.out
 ```
 
-On the HP 9000 Model 705, the compiler produced a `PA-RISC 1.1 shared executable` binary. On HP 9000 Model 340, the compiler produced an `s200 pure executable -version 3` binary.
+On the HP 9000 Model 705, the compiler produced a `PA-RISC 1.1 shared executable` binary. On HP 9000 Model 340, the compiler produced an `s200 pure executable -version 3` binary. The `-O` options specifies _Level 2 Optimisations_. On a 68K platform, MC68882 FPU instructions should be produced by default.
 
 The HP 9000 340 had the disadvantage that the filesystem was network mounted, so writing the image to disk probably took longer than if it had a local SCSI disk, and this would have affected the score. But a 68030 + 68882 was never going to score well anyway.
 
