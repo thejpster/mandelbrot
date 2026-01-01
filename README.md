@@ -144,7 +144,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 
 | Machine                | CPU                              | OS                | Compilation | kPixels Per Second | Cycles/pixel |
 | ---------------------- | -------------------------------- | ----------------- | ----------- | -----------------: | -----------: |
-| Apple Mac Mini M4      | Apple M4 @ 4.4 GHz               | macOS 15.3        | 3           |               8680 |          514 |
+| Apple Mac Mini M4      | Apple M4 @ 4.4 GHz               | macOS 15.3        | 3           |              10771 |          408 |
 | HP Z1 Entry Tower G5   | Intel Core i9-9900 CPU @ 3.10GHz | Pop OS! 22.04     | 2           |               6675 |          464 |
 | MacBook M1 Pro         | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           |               6230 |          513 |
 | HP Z1 Entry Tower G5   | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           |               5693 |          544 |
