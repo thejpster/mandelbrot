@@ -93,7 +93,7 @@ This particular C compiler produced 64-bit PA-RISC 2.0 ELF files.
 
 ### (7) GCC for NEXTSTEP 3.3
 
-I used `cc-437.2.6, gcc version 2.5.8` from the NEXTSTEP 3.3 Developer CD. When ran it on an HP 9000 712/60 it produced PA-RISC 1.1 Mach-O files. When I ran it on a SPARCstation 20 it produced SPARC Mach-O files.
+I used `cc-437.2.6, gcc version 2.5.8` from the NEXTSTEP 3.3 Developer CD. When I ran it on an HP 9000 712/60 it produced PA-RISC 1.1 Mach-O files. When I ran it on a SPARCstation 20 it produced SPARC Mach-O files.
 
 ```console
 hp712> cc -O3 -o mandel mandel.c
