@@ -58,14 +58,16 @@ user@host:~/mandelbrot $ ./mandel
 
 ### (4) MIPSpro for IRIX
 
-I used `MIPSpro ANSI C 6.2` on IRIX 6.2.
+I used `MIPSpro ANSI C 6.2` on IRIX 6.2 for the POWER Indigo 2, and `MIPSpro ANSI C 7.3` on IRIX 6.5.22 for the O2. Either way, it was:
 
 ```console
 % cc -O3 -o mandel mandel.c
 % ./mandel
 ```
 
-Because it was compiled on an R8000 machine, the C compiler produced a 64-bit executable using MIPS IV instructions.
+The POWER Indigo 2 had an R8000 CPU, and so the C compiler produced a 64-bit executable using MIPS IV instructions.
+
+The O2 had an R5000 CPU, but IRIX 6.5 only offers a 32-bit kernel and so we got a 32-bit executable using MIPS IV instructions.
 
 ### (5) GCC for SPARC Solaris
 
@@ -91,7 +93,7 @@ This particular C compiler produced 64-bit PA-RISC 2.0 ELF files.
 
 ### (7) GCC for NEXTSTEP 3.3
 
-I used `cc-437.2.6, gcc version 2.5.8` from the NEXTSTEP 3.3 Developer CD. When ran it on an HP 9000 712/60 it produced PA-RISC 1.1 Mach-O files. When I ran it on a SPARCstation 20 it produced SPARC Mach-O files.
+I used `cc-437.2.6, gcc version 2.5.8` from the NEXTSTEP 3.3 Developer CD. When I ran it on an HP 9000 712/60 it produced PA-RISC 1.1 Mach-O files. When I ran it on a SPARCstation 20 it produced SPARC Mach-O files.
 
 ```console
 hp712> cc -O3 -o mandel mandel.c
@@ -152,6 +154,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | Raspberry Pi 4         | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           |               1783 |         1009 |
 | HP Visualize C3000     | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           |                534 |          749 |
 | Sun Ultra 80           | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           |                421 |         1068 |
+| SGI O2                 | MIPS R5000 @ 200 MHz             | IRIX 6.5.22       | 4           |                146 |         1370 |
 | DEC 3000 Model 800 AXP | DEC Alpha 21064 @ 200 MHz        | Digital UNIX V4.0 | 8           |                 95 |         2105 |
 | SGI POWER Indigo 2     | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           |                 57 |         1311 |
 | Sun SPARCstation 20    | SuperSPARC-II @ 60 MHz           | NEXTSTEP 3.3      | 7           |                 51 |         1167 |
@@ -164,6 +167,6 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 
 Notes:
 
-- On the MacBook M1 Pro you have to run it a few times in a row to get the CPU to ramp up to maximum performance.
+- On the Apple Silicon machines you have to run it a few times in a row to get the CPU to ramp up to maximum performance.
 - Some of these systems have multiple processors, or multiple cores within a processor, or multiple hardware threads within a core. This benchmark is strictly single-threaded though.
 - Some of these systems have variable clock frequencies, and so for 'Cycles/pixel' we've assumed the system is running at its nominal clock speed, which might be wrong.
