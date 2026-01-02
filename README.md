@@ -167,6 +167,6 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 
 Notes:
 
-- On the MacBook M1 Pro you have to run it a few times in a row to get the CPU to ramp up to maximum performance.
+- On the Apple Silicon machines you have to run it a few times in a row to get the CPU to ramp up to maximum performance.
 - Some of these systems have multiple processors, or multiple cores within a processor, or multiple hardware threads within a core. This benchmark is strictly single-threaded though.
 - Some of these systems have variable clock frequencies, and so for 'Cycles/pixel' we've assumed the system is running at its nominal clock speed, which might be wrong.
