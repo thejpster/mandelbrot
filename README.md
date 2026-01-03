@@ -140,6 +140,28 @@ This was still excruciatingly slow, taking around 2 hours 45 minutes.
 
 Either way, I got a 32-bit ARMv3 OABI ELF file (`readelf` says it is *EABI* but it's definitely *OABI*).
 
+### (12) clang for OpenBSD 7.8 for SPARC
+
+I used `clang 19.1.7` on an install of the latest OpenBSD snapshot for `sparc64`.
+
+```console
+$ clang -O3 -o mandel mandel.c -D __unix
+$ ./mandel
+```
+
+It generated a 64-bit big-endian SPARC V9 ELF file.
+
+### (13) gcc for OpenBSD 7.8 for SPARC
+
+I used `gcc 4.2.1` on an install of the latest OpenBSD snapshot for `sparc64`.
+
+```console
+$ gcc -O3 -o mandel mandel.c -D __unix
+$ ./mandel
+```
+
+It generated a 64-bit big-endian SPARC V9 ELF file.
+
 ## Benchmarks
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
@@ -154,6 +176,8 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | Raspberry Pi 4         | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           |               1783 |         1009 |
 | HP Visualize C3000     | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           |                534 |          749 |
 | Sun Ultra 80           | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           |                421 |         1068 |
+| Sun SPARCengine Ultra  | UltraSPARC II @ 333 MHz          | OpenBSD 7.8       | 13          |                310 |         1078 |
+| Sun SPARCengine Ultra  | UltraSPARC II @ 333 MHz          | OpenBSD 7.8       | 12          |                256 |         1300 |
 | SGI O2                 | MIPS R5000 @ 200 MHz             | IRIX 6.5.22       | 4           |                146 |         1370 |
 | DEC 3000 Model 800 AXP | DEC Alpha 21064 @ 200 MHz        | Digital UNIX V4.0 | 8           |                 95 |         2105 |
 | SGI POWER Indigo 2     | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           |                 57 |         1311 |
