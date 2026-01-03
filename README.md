@@ -140,30 +140,54 @@ This was still excruciatingly slow, taking around 2 hours 45 minutes.
 
 Either way, I got a 32-bit ARMv3 OABI ELF file (`readelf` says it is *EABI* but it's definitely *OABI*).
 
+### (12) clang for OpenBSD 7.8 for SPARC
+
+I used `clang 19.1.7` on an install of the latest OpenBSD snapshot for `sparc64`.
+
+```console
+$ clang -O3 -o mandel mandel.c -D __unix
+$ ./mandel
+```
+
+It generated a 64-bit big-endian SPARC V9 ELF file.
+
+### (13) gcc for OpenBSD 7.8 for SPARC
+
+I used `gcc 4.2.1` on an install of the latest OpenBSD snapshot for `sparc64`.
+
+```console
+$ gcc -O3 -o mandel mandel.c -D __unix
+$ ./mandel
+```
+
+It generated a 64-bit big-endian SPARC V9 ELF file.
+
 ## Benchmarks
 
 The benchmark is relatively short on fast machines, and there's a lot of noise. They are really just to give you an order-of-magnitude difference between systems.
 
-| Machine                | CPU                              | OS                | Compilation | kPixels Per Second | Cycles/pixel |
-| ---------------------- | -------------------------------- | ----------------- | ----------- | -----------------: | -----------: |
-| Apple Mac Mini M4      | Apple M4 @ 4.4 GHz               | macOS 15.3        | 3           |              10771 |          408 |
-| HP Z1 Entry Tower G5   | Intel Core i9-9900 CPU @ 3.10GHz | Pop OS! 22.04     | 2           |               6675 |          464 |
-| MacBook M1 Pro         | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           |               6230 |          513 |
-| HP Z1 Entry Tower G5   | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           |               5693 |          544 |
-| Raspberry Pi 5         | Arm Cortex-A76 @ 2.4 GHz         | Debian Linux 12.8 | 2           |               5300 |          452 |
-| Raspberry Pi 4         | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           |               1783 |         1009 |
-| HP Visualize C3000     | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           |                534 |          749 |
-| Sun Ultra 80           | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           |                421 |         1068 |
-| SGI O2                 | MIPS R5000 @ 200 MHz             | IRIX 6.5.22       | 4           |                146 |         1370 |
-| DEC 3000 Model 800 AXP | DEC Alpha 21064 @ 200 MHz        | Digital UNIX V4.0 | 8           |                 95 |         2105 |
-| SGI POWER Indigo 2     | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           |                 57 |         1311 |
-| Sun SPARCstation 20    | SuperSPARC-II @ 60 MHz           | NEXTSTEP 3.3      | 7           |                 51 |         1167 |
-| HP 9000 712            | HP PA-RISC 7100LC @ 60 MHz       | NEXTSTEP 3.3      | 7           |                 49 |         1217 |
-| Sun SPARCstation 5     | microSPARC-II @ 110 MHz          | Solaris 2.6       | 5           |                 47 |         2310 |
-| HP 9000 705            | HP PA-RISC 7000 @ 35 MHz         | HP-UX 9.0         | 9           |                 24 |         1417 |
-| HP 9000 340            | MC68030/68882 @ 16.7 MHz         | HP-UX 9.0         | 9           |               0.53 |       31,447 |
-| Acorn RiscPC 700       | ARM710 @ 40 MHz                  | RISC OS 3.6       | 10          |               0.33 |      121,000 |
-| Acorn RiscPC 700       | ARM710 @ 40 MHz                  | Debian Linux 3.0  | 11          |               0.13 | over 300,000 |
+| Machine                   | CPU                              | OS                | Compilation | kPixels Per Second | Cycles/pixel |
+| ------------------------- | -------------------------------- | ----------------- | ----------- | -----------------: | -----------: |
+| Apple Mac Mini M4         | Apple M4 @ 4.4 GHz               | macOS 15.3        | 3           |              10771 |          408 |
+| HP Z1 Entry Tower G5      | Intel Core i9-9900 CPU @ 3.10GHz | Pop OS! 22.04     | 2           |               6675 |          464 |
+| MacBook M1 Pro            | Apple M1 Pro @ 3.2 GHz           | macOS 15.1        | 3           |               6230 |          513 |
+| HP Z1 Entry Tower G5      | Intel Core i9-9900 CPU @ 3.10GHz | Windows 11 x64    | 1           |               5693 |          544 |
+| Raspberry Pi 5            | Arm Cortex-A76 @ 2.4 GHz         | Debian Linux 12.8 | 2           |               5300 |          452 |
+| Raspberry Pi 4            | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           |               1783 |         1009 |
+| HP Visualize C3000        | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           |                534 |          749 |
+| Sun Ultra 80              | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           |                421 |         1068 |
+| Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | OpenBSD 7.8       | 13          |                310 |         1078 |
+| Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | OpenBSD 7.8       | 12          |                256 |         1300 |
+| SGI O2                    | MIPS R5000 @ 200 MHz             | IRIX 6.5.22       | 4           |                146 |         1370 |
+| DEC 3000 Model 800 AXP    | DEC Alpha 21064 @ 200 MHz        | Digital UNIX V4.0 | 8           |                 95 |         2105 |
+| SGI POWER Indigo 2        | MIPS R8000 @ 75 MHz              | IRIX 6.2          | 4           |                 57 |         1311 |
+| Sun SPARCstation 20       | SuperSPARC-II @ 60 MHz           | NEXTSTEP 3.3      | 7           |                 51 |         1167 |
+| HP 9000 712               | HP PA-RISC 7100LC @ 60 MHz       | NEXTSTEP 3.3      | 7           |                 49 |         1217 |
+| Sun SPARCstation 5        | microSPARC-II @ 110 MHz          | Solaris 2.6       | 5           |                 47 |         2310 |
+| HP 9000 705               | HP PA-RISC 7000 @ 35 MHz         | HP-UX 9.0         | 9           |                 24 |         1417 |
+| HP 9000 340               | MC68030/68882 @ 16.7 MHz         | HP-UX 9.0         | 9           |               0.53 |       31,447 |
+| Acorn RiscPC 700          | ARM710 @ 40 MHz                  | RISC OS 3.6       | 10          |               0.33 |      121,000 |
+| Acorn RiscPC 700          | ARM710 @ 40 MHz                  | Debian Linux 3.0  | 11          |               0.13 | over 300,000 |
 
 Notes:
 
