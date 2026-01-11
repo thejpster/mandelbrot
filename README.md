@@ -126,9 +126,20 @@ Some hacking on the `time.h` file was required as I was unable to work out preci
 
 I used the `!CC` program to compile `c.mandel`. Modifications were required to name the output file `output/ppm` rather than `output.ppm`, to avoid an ugly looking error which I think was caused because the `output` folder did not exist. Yes, on RISC OS `/` is just a valid filename character and `.` is in fact the directory separator.
 
-### (11) GCC for Debian 3.0 (Woody) for Arm
+### (11) GCC for Debian 3.0 (Woody) for Arm and PowerPC
 
-I used `gcc 2.95.4` on Debian 3.0 (Woody) for Arm. Initially I used the default options, which emitted `CDP` instructions that were trapped by the kernel and emulated. This build ran for over three hours and was nowhere near finished (the RISC OS build completed in just over an hour on the same hardware, for reference). I did a second build using:
+I used `gcc 2.95.4` on Debian 3.0 (Woody) for Arm and PowerPC.
+
+On PowerPC I just ran:
+
+```console
+$ gcc -O3 -o mandel mandel.c
+$ ./mandel
+```
+
+I got a 32-bit big-endian PowerPC ELF file.
+
+On Arm, initially I used the default options, which emitted `CDP` instructions that were trapped by the kernel and emulated. This build ran for over three hours and was nowhere near finished (the RISC OS build completed in just over an hour on the same hardware, for reference). I did a second build using:
 
 ```console
 $ apt-get install libfloat1-dev
@@ -177,6 +188,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | HP Visualize C3000        | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           |                534 |          749 |
 | Sun Ultra 80              | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           |                421 |         1068 |
 | Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | OpenBSD 7.8       | 13          |                310 |         1078 |
+| Apple Power Macintosh G3  | PowerPC 740 @ 266 MHz            | Debian Linux 3.0  | 11          |                271 |          981 |
 | Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | OpenBSD 7.8       | 12          |                256 |         1300 |
 | SGI O2                    | MIPS R5000 @ 200 MHz             | IRIX 6.5.22       | 4           |                146 |         1370 |
 | DEC 3000 Model 800 AXP    | DEC Alpha 21064 @ 200 MHz        | Digital UNIX V4.0 | 8           |                 95 |         2105 |
