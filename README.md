@@ -188,7 +188,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | HP Visualize C3000        | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           |                534 |          749 |
 | Sun Ultra 80              | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           |                421 |         1068 |
 | Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | OpenBSD 7.8       | 13          |                310 |         1078 |
-| Apple Power Macintosh G3  | PowerPC 740 @ 266 MHz            | Debian Linux 3.0  | 11          |                271 |          981 |
+| Apple Power Macintosh G3  | PowerPC 750 @ 266 MHz            | Debian Linux 3.0  | 11          |                271 |          981 |
 | Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | OpenBSD 7.8       | 12          |                256 |         1300 |
 | SGI O2                    | MIPS R5000 @ 200 MHz             | IRIX 6.5.22       | 4           |                146 |         1370 |
 | DEC 3000 Model 800 AXP    | DEC Alpha 21064 @ 200 MHz        | Digital UNIX V4.0 | 8           |                 95 |         2105 |
