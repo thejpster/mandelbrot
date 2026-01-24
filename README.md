@@ -78,7 +78,7 @@ $ gcc -O3 -o mandel mandel.c -mcpu=v9
 $ ./mandel
 ```
 
-This particular C compiler produced 32-bit SPARC ELF files. I wasn't able to get it to produce 64-bit SPARC ELF code.
+This particular C compiler produced 32-bit SPARC ELF files. I wasn't able to get it to produce 64-bit SPARC ELF code. When I tried adding `-march=v9`, the binaries ran slower.
 
 ### (6) GCC for PA-RISC HP-UX
 
@@ -187,6 +187,7 @@ The benchmark is relatively short on fast machines, and there's a lot of noise. 
 | Raspberry Pi 4            | Arm Cortex-A72 @ 1.8 GHz         | Debian Linux 12.8 | 2           |               1783 |         1009 |
 | HP Visualize C3000        | HP PA-RISC 8500 @ 400 MHz        | HP-UX 11.00       | 6           |                534 |          749 |
 | Sun Ultra 80              | UltraSPARC II @ 450 MHz          | Solaris 7         | 5           |                421 |         1068 |
+| Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | Solaris 7         | 5           |                316 |         1053 |
 | Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | OpenBSD 7.8       | 13          |                310 |         1078 |
 | Apple Power Macintosh G3  | PowerPC 750 @ 266 MHz            | Debian Linux 3.0  | 11          |                271 |          981 |
 | Sun SPARCengine Ultra AXi | UltraSPARC IIi @ 333 MHz         | OpenBSD 7.8       | 12          |                256 |         1300 |
