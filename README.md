@@ -1,5 +1,7 @@
 # mandelbrot
 
+**NOW LOCATED AT <https://git.thejpster.org.uk/thejpster/mandelbrot>**
+
 > Some mandelbrot benchmarks for the PCs I own.
 
 I have a collection of weird and wonderful computers, and I thought it would be interesting to benchmark them.
